@@ -13,7 +13,7 @@ def call() {
      stages {
         stage('Init') {
             steps {
-                sh 'terraform init -backend-config=${ENV}-env/state.tfvars'
+                sh 'sudo terraform init -backend-config=${ENV}-env/state.tfvars'
             }
         }
         stage('Apply') {
