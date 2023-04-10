@@ -13,12 +13,13 @@ def call() {
      stages {
         stage('Init') {
             steps {
-                sh 'terraform init -backend-config=dev-${ENV}/state.tfvars'
+                sh 'terraform init -backend-config=${ENV}-env/state.tfvars'
             }
         }
         stage('Apply') {
             steps {
-                sh "terraform apply -auto-approve -var-file=dev-env/dev.tfvars"
+                // sh "terraform apply -auto-approve -var-file=dev-env/dev.tfvars"
+                sh 'echo'
             }
         }
      }
