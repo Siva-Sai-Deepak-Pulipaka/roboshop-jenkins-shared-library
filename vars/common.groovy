@@ -14,6 +14,9 @@ def testcases() {
     if(app_lang == "maven") {
         sh 'mvn package'
     }
+    if(app_lang == "golang") {
+        sh 'go test'
+    }
 }
 
 def codequality() {
