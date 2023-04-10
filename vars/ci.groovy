@@ -1,7 +1,7 @@
 // call is a default function  
 def call() {
     
-    if (!sonar_extra_opts) {            //means if var is not there then the value is empty
+    if (!env.sonar_extra_opts) {            //means if var is not there then the value is empty
         env.sonar_extra_opts = ""
     }
 
