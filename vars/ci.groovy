@@ -20,7 +20,8 @@ def call() {
             
             stage('Test Cases') {
                 steps {
-                    script {{
+                    script {
+                        sh 'exit 1'
                         common.testcases()
                     }
                 }
