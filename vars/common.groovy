@@ -8,15 +8,15 @@ def compile() {
 }
 
 def testcases() {
-    // if(app_lang == "nodejs") {
-    //     sh 'npm install'
-    // }
-    // if(app_lang == "maven") {
-    //     sh 'mvn package'
-    // }
-    // if(app_lang == "golang") {
-    //     sh 'echo'
-    // }
+    if(app_lang == "nodejs") {
+        sh 'npm install'
+    }
+    if(app_lang == "maven") {
+        sh 'mvn package'
+    }
+    if(app_lang == "golang") {
+        sh 'echo'
+    }
 }
 
 def codequality() {
