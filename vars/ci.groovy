@@ -21,7 +21,6 @@ def call() {
             stage('Test Cases') {
                 steps {
                     script {
-                        sh 'exit 1'
                         common.testcases()
                     }
                 }
