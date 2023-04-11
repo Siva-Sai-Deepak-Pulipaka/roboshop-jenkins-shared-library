@@ -20,5 +20,9 @@ def testcases() {
 }
 
 def codequality() {
-    sh 'sonar-scanner -Dsonar.host.url=http://172.31.13.99:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=${component} ${sonar_extra_opts}'
+    withAWSParameters(credentialsId: 'PARAM' naming: 'absolute', path: 'sonarqube.user', recursive: true, regionName: 'us-east-1') 
+    {
+      sh 'sonar-scanner -Dsonar.host.url=http://172.31.13.99:9000 -Dsonar.login=${SONARQUBE_USER} -Dsonar.password=${SONARQUBE_PASS} -Dsonar.projectKey=${component} ${sonar_extra_opts}'
+    }
+    
 }
