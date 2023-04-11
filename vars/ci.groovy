@@ -34,5 +34,11 @@ def call() {
                 }
             }
         }
+            post {
+                failure {
+                    mail body: "<h1>${component} - Pipeline Failed \n ${BUILD_URL}</h1>", from: "cloudprojectmail001@gmail.com", subject: "${component} - Pipeline Failed", to: "cloudprojectmail001@gmail.com", mimeType: 'text/html'
+                }
+            }
     }
 }  
+
