@@ -39,11 +39,13 @@ def call() {
           common.testcases()
             }
         }
+
+        if (BRANCH_NAME ==~ "PR-.*") {
             
             stage('Code Quality') {
-                        common.codequality()
-                    }
-    
+             common.codequality()
+            }
+        } 
         } catch (e) {
 
                     mail body: "<h1>${component} - Pipeline Failed \n ${BUILD_URL}</h1>", from: "cloudprojectmail001@gmail.com", subject: "${component} - Pipeline Failed", to: "cloudprojectmail001@gmail.com", mimeType: 'text/html'
