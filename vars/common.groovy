@@ -26,5 +26,10 @@ def codequality() {
     //   sh 'sonar-scanner -Dsonar.host.url=http://172.31.8.146:9000 -Dsonar.login=${SONARQUBE_USER} -Dsonar.password=${SONARQUBE_PASS} -Dsonar.projectKey=${component} ${sonar_extra_opts} -Dsonar.qualitygate.wait=true'
     sh 'echo Ok'
     }
+}
+def prepareArtifacts() {
+    if (app_lang == "nodejs") {
+    sh 'zip -r ${component}-${TAG_NAME}.zip'
+}
     
 }
