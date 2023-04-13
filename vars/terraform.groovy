@@ -18,8 +18,8 @@ def call() {
         }
         stage('Apply') {
             steps {
-                // sh "terraform apply -auto-approve -var-file=dev-env/dev.tfvars"
-                sh 'echo'
+                 sh "terraform apply -auto-approve -var-file=${ENV}-env/${ENV}.tfvars"
+                // sh 'echo'
             }
         }
      }
