@@ -19,7 +19,7 @@ def call() {
             stage('Clean Code') {
                 // sh 'rm -rf *'
                 cleanWs()     // this is default func to clean everything in  jenkins workspace
-                git branch: 'main', url: 'https://github.com/Siva-Sai-Deepak-Pulipaka/cart'
+                git branch: 'main', url: "https://github.com/Siva-Sai-Deepak-Pulipaka/${component}"
             }
 
             sh 'env'     // displays environment variables
