@@ -32,9 +32,7 @@ def prepareArtifacts() {
     if (app_lang == "nodejs" || app_lang == "angular") {
     sh 'zip -r ${component}-${TAG_NAME}.zip * -x Jenkinsfile'
     }
-    if (app_lang == "maven") {
-        sh 'zip -r ${component}-${TAG_NAME}.zip ${component}.jar VERSION'
-    }
+    
 
 }
 
@@ -43,5 +41,8 @@ def artifactUpload() {
     if (app_lang == "nodejs" || app_lang == "angular") {
     sh "curl -v -u admin:admin123 --upload-file ${component}-${TAG_NAME}.zip http://172.31.5.252:8081/repository/${component}/${component}-${TAG_NAME}.zip"
 }
+    if (app_lang == "maven") {
+        sh 'zip -r ${component}-${TAG_NAME}.zip ${component}.jar VERSION'
+    }
 
 }
