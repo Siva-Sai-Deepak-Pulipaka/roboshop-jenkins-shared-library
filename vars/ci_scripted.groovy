@@ -50,7 +50,7 @@ def call() {
         if (env.GTAG == "true") {
             
             stage('Package') {
-             common.testcases()
+             common.prepareArtifacts()
             }
             stage('Artifact upload') {
                 common.testcases()
