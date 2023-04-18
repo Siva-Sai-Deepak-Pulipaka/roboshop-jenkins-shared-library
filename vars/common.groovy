@@ -50,7 +50,7 @@ def artifactUpload() {
     sh 'echo ${TAG_NAME} >VERSION'
     sh 'echo ${TAG_NAME} >VERSION'
     // if (app_lang == "nodejs" || app_lang == "angular") {
-    sh 'curl -v -u ${NEXUS_USER}:${NEXUS_PASS} --upload-file ${component}-${TAG_NAME}.zip http://34.205.81.210:8081/repository/${component}/${component}-${TAG_NAME}.zip'
+    sh 'curl -v -u ${NEXUS_USER}:${NEXUS_PASS} --upload-file ${component}-${TAG_NAME}.zip http://172.31.5.252:8081/repository/${component}/${component}-${TAG_NAME}.zip'
     }
 
 
