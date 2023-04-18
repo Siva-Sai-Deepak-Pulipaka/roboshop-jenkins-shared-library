@@ -3,7 +3,7 @@ def compile() {
         sh 'npm install'
     }
     if(app_lang == "maven") {
-        sh 'mvn package'
+        sh 'mvn package; mv target/${component}-1.0.jar ${component}.jar'
     }
 }
 
@@ -43,10 +43,15 @@ def prepareArtifacts() {
 }
 
 def artifactUpload() {
-     sh 'echo ${TAG_NAME} >VERSION'
+    env.NEXUS_USER = sh ( script: 'aws ssm get-parameter --name prod.nexus.user --with-decryption | jq .Parameter.Value | xargs', returnStdout: true ).trim()
+    env.NEXUS_PASS = sh ( script: 'aws ssm get-parameter --name prod.nexus.pass --with-decryption | jq .Parameter.Value | xargs', returnStdout: true ).trim()
+    wrap([$class: 'MaskPasswordsBuildWrapper',
+        varPasswordPairs: [[password: NEXUS_PASS],[password: NEXUS_USER]]]) {
+    sh 'echo ${TAG_NAME} >VERSION'
+    sh 'echo ${TAG_NAME} >VERSION'
     // if (app_lang == "nodejs" || app_lang == "angular") {
-    sh "curl -v -u admin:admin123 --upload-file ${component}-${TAG_NAME}.zip http://172.31.5.252:8081/repository/${component}/${component}-${TAG_NAME}.zip"
-//    }
+    sh 'curl -v -u ${NEXUS_USER}:${NEXUS_PASS} --upload-file ${component}-${TAG_NAME}.zip http://http://34.205.81.210:8081/repository/${component}/${component}-${TAG_NAME}.zip'
+    }
 
 
 }
