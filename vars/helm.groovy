@@ -25,11 +25,13 @@ pipeline {
             }
          }
        }
-    }
+
     post {
         always {
             cleanWs()
         }
+      }
     }
-    }
+}
+
 
