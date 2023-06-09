@@ -15,6 +15,9 @@ pipeline {
                     dir('APP') {
                         git branch: 'main', url: "https://github.com/Siva-Sai-Deepak-Pulipaka/${component}"
                     }
+                    dir('HELM') {
+                        git branch: 'main', url: "https://github.com/Siva-Sai-Deepak-Pulipaka/roboshop-helm-charts"
+                    }
                 }
             }
             stage('Deploy Helm Chart') {
